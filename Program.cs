@@ -1,128 +1,147 @@
 ﻿using System;
+using System.Data;
 
-namespace I_really_don_t_know_what_is_it
+namespace lab02_ver2
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Здравствуй! Как тебя зовут?");
-            string name = Console.ReadLine();
-            Console.WriteLine($"Приятно познакомиться, {name}. Теперь введи дату на сегодняшний день:");
-            Console.WriteLine("Введи год");
-            int x = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Теперь месяц");
-            int y = Convert.ToInt32(Console.ReadLine());
-            if (y < 1 || y > 12)
+            Console.WriteLine("Для начала, выберите фигуру:");
+            int shf;
+            Console.WriteLine("Король - 1, Ферзь - 2, Ладья - 3, Слон - 4, Конь - 5, Пешка - 6 ");
+            do
             {
-                Console.WriteLine($"Такого месяца как {y} не существует!");
-                return;
-            }
-            Console.WriteLine("День");
-            int z = Convert.ToInt32(Console.ReadLine());
-            if (y == 2) //если месяц февраль, то проверяем на високосный год
+                shf = Convert.ToInt32(Console.ReadLine());
+                if (shf < 1 || shf > 6)
+                    Console.WriteLine("Нет такой фигуры. Попробуйте ещё раз");
+                else
+                    break;
+            } while (shf < 1 || shf > 6);
+            Console.WriteLine("Введите конечные координаты:\nПо горизонтали - ABCDEFGH\nПо вертикали - 12345678\nПример C5");
+            int endver = 0;
+            int endgor = 0;
+            ProvFig(ref endgor, ref endver);
+            Console.WriteLine("Введите конечные координаты:\nПо горизонтали - ABCDEFGH\nПо вертикали - 12345678\nПример C5");
+            int endgor2 = 0;
+            int endver2 = 0;
+            ProvFig(ref endgor2, ref endver2);
+            if (shf == 1)
+                Korol(endgor, endgor2, endver, endver2);
+            else if (shf == 2)
+                Ferz(endgor, endgor2, endver, endver2);
+            else if (shf == 3)
+                Lad(endgor, endgor2, endver, endver2);
+            else if (shf == 4)
+                Slon(endgor, endgor2, endver, endver2);
+            else if (shf == 5)
+                Kon(endgor, endgor2, endver, endver2);
+            else if (shf == 6)
+                Peshka(endgor, endgor2, endver, endver2);
+        }
+        static void ProvFig(ref int x, ref int y)
+        {
+            string koor1;
+            string gor;
+            char gk;
+            int goriz;
+            int vert;
+            do
             {
-                if (x % 4 == 0)
-                {
-                    if (z < 1 || z > 29)
-                    {
-                        Console.WriteLine($"Извини, в этом месяце нет такого дня как {z}");
-                        return;
-                    }
-                }
+                koor1 = Console.ReadLine();
+                gk = koor1[0];
+                goriz = Convert.ToInt16(gk);
+                gor = Convert.ToString(koor1[1]);
+                vert = Convert.ToInt32(gor);
+                if (goriz < 65 || goriz > 72 || vert < 1 || vert > 8)
+                    Console.WriteLine("Не верно. Попробуй ещё раз.");
                 else
                 {
-                    if (z < 1 || z > 28)
-                    {
-                        Console.WriteLine($"К сожалению, в этом месяце нет такого дня как {z}");
-                        return;
-                    }
+                    x += goriz;
+                    y += vert;
+                    break;
                 }
-            }
-            else if (y == 1 | y == 3 | y == 5 | y == 7 | y == 8 | y == 10 | y == 12) //если у месяца всего 31 день, то выполняем проверку на дни
+            } while (goriz < 65 || goriz > 72 || vert < 1 || vert > 8);
+        }
+        static void Korol(int x1, int x2, int y1, int y2)
+        {
+            int razngor = Math.Abs(x1 - x2);
+            int raznver = Math.Abs(y1 - y2);
+            if (razngor == 1 && raznver == 1)
+                Console.WriteLine("Верно");
+            else if (razngor == 0 && raznver == 1)
+                Console.WriteLine("Верно");
+            else if (razngor == 1 && raznver == 0)
+                Console.WriteLine("Верно");
+            else
+                Console.WriteLine("Не верно");
+        }
+        static void Kon(int x1, int x2, int y1, int y2)
+        {
+            int razngor = Math.Abs(x1 - x2);
+            int raznver = Math.Abs(y1 - y2);
+            if (razngor == 1 && raznver == 2)
+                Console.WriteLine("Верно");
+            else if (razngor == 2 && raznver == 1)
+                Console.WriteLine("Верно");
+            else
+                Console.WriteLine("Не верно");
+        }
+        static void Ferz(int x1, int x2, int y1, int y2)
+        {
+            int razngor = Math.Abs(x1 - x2);
+            int raznver = Math.Abs(y1 - y2);
+            if (razngor == 0 && raznver > 0)
+                Console.WriteLine("Верно");
+            else if (raznver == 0 && razngor > 0)
+                Console.WriteLine("Верно");
+            else if (razngor != 0 && raznver != 0 && razngor == raznver)
+                Console.WriteLine("Верно");
+            else
+                Console.WriteLine("Не верно");
+        }
+        static void Lad(int x1, int x2, int y1, int y2)
+        {
+            int razngor = Math.Abs(x1 - x2);
+            int raznver = Math.Abs(y1 - y2);
+            if (razngor == raznver && raznver != 0 && razngor != 0)
+                Console.WriteLine("Верно");
+            else
+                Console.WriteLine("Не верно");
+        }
+        static void Slon(int x1, int x2, int y1, int y2)
+        {
+            int razngor = Math.Abs(x1 - x2);
+            int raznver = Math.Abs(y1 - y2);
+            if (razngor == 0 && raznver > 0)
+                Console.WriteLine("Верно");
+            else if (razngor > 0 && raznver == 0)
+                Console.WriteLine("Верно");
+            else
+                Console.WriteLine("Не верно");
+        }
+        static void Peshka(int x1, int x2, int y1, int y2)
+        {
+            int razngor = Math.Abs(x1 - x2);
+            int raznver = Math.Abs(y1 - y2);
+            if (y1 == 2)
             {
-                if (z < 1 || z > 31)
-                {
-                    Console.WriteLine($"В этом месяце нет такого дня как {z}...");
-                    return;
-                }
-            }
-            else if (y == 4 | y == 6 | y == 9 | y == 11) //если у месяца всего 30 дней, то выполняем проверку
-            {
-                if (z < 1 || z > 30)
-                {
-                    Console.WriteLine($"Уууупс... В этом месяце нет такого дня как {z}");
-                    return;
-                }
-            }
-
-            Console.WriteLine("Отлично!");
-            Console.WriteLine("Теперь введи дату своего дня рождения:");
-            Console.WriteLine("Год");
-            int x2 = Convert.ToInt32(Console.ReadLine());
-            if (x < x2)
-            {
-                Console.WriteLine("Error! Год Дня рождения превышает год, который идёт на данный момент.");
-                return;
-            }
-            Console.WriteLine("Месяц");
-            int y2 = Convert.ToInt32(Console.ReadLine());
-            if (y2 < 1 || y2 > 12)
-            {
-                Console.WriteLine($"Нет такого месяца как {y2}");
-                return;
-            }
-            Console.WriteLine("День");
-            int z2 = Convert.ToInt32(Console.ReadLine());
-            if (y2 == 2) //если месяц февраль, то проверяем на високосный год
-            {
-                if (x2 % 4 == 0)
-                {
-                    if (z2 < 1 || z2 > 29)
-                    {
-                        Console.WriteLine($"Error! В этом месяце нет такого дня как {z2}");
-                        return;
-                    }
-                }
+                if (razngor == 0 && raznver == 2)
+                    Console.WriteLine("Верно");
+                else if (razngor == 0 && raznver == 1)
+                    Console.WriteLine("Верно");
                 else
-                {
-                    if (z2 < 1 || z2 > 28)
-                    {
-                        Console.WriteLine($"Error! В этом месяце нет такого дня как {z2}");
-                        return;
-                    }
-                }
+                    Console.WriteLine("Не верно");
             }
-            else if (y2 == 1 | y2 == 3 | y2 == 5 | y2 == 7 | y2 == 8 | y2 == 10 | y2 == 12) //если у месяца всего 31 день, то выполняем проверку на дни
+            else if (y1 == 1)
+                Console.WriteLine($"Не верные начальные координаты");
+            else
             {
-                if (z2 < 1 || z2 > 31)
-                {
-                    Console.WriteLine($"Error! В этом месяце нет такого дня как {z2}");
-                    return;
-                }
+                if (razngor == 0 && raznver == 1)
+                    Console.WriteLine("Верно");
+                else
+                    Console.WriteLine("Не верно");
             }
-            else if (y2 == 4 | y2 == 6 | y2 == 9 | y2 == 11) //если у месяца всего 30 дней, то выполняем проверку
-            {
-                if (z2 < 1 || z2 > 30)
-                {
-                    Console.WriteLine($"Error! В этом месяце нет такого дня как {z2}");
-                    return;
-                }
-            }
-
-            int razg = x - x2;
-            if (y2 > y)
-            {
-                razg -= 1;
-            }
-            else if (y2 == y)
-            {
-                if (z2 > z)
-                {
-                    razg -= 1;
-                }
-            }
-            Console.WriteLine($"Здравствуй, {name}, тебе {razg} лет");
         }
     }
 }
