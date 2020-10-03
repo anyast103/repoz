@@ -1,0 +1,13 @@
+C:\Users\aafil\source\repos\Horse\obj\Debug\netcoreapp3.1\Horse.csprojAssemblyReference.cache
+C:\Users\aafil\source\repos\Horse\obj\Debug\netcoreapp3.1\Horse.AssemblyInfoInputs.cache
+C:\Users\aafil\source\repos\Horse\obj\Debug\netcoreapp3.1\Horse.AssemblyInfo.cs
+C:\Users\aafil\source\repos\Horse\obj\Debug\netcoreapp3.1\Horse.csproj.CoreCompileInputs.cache
+C:\Users\aafil\source\repos\Horse\bin\Debug\netcoreapp3.1\Horse.exe
+C:\Users\aafil\source\repos\Horse\bin\Debug\netcoreapp3.1\Horse.deps.json
+C:\Users\aafil\source\repos\Horse\bin\Debug\netcoreapp3.1\Horse.runtimeconfig.json
+C:\Users\aafil\source\repos\Horse\bin\Debug\netcoreapp3.1\Horse.runtimeconfig.dev.json
+C:\Users\aafil\source\repos\Horse\bin\Debug\netcoreapp3.1\Horse.dll
+C:\Users\aafil\source\repos\Horse\bin\Debug\netcoreapp3.1\Horse.pdb
+C:\Users\aafil\source\repos\Horse\obj\Debug\netcoreapp3.1\Horse.dll
+C:\Users\aafil\source\repos\Horse\obj\Debug\netcoreapp3.1\Horse.pdb
+C:\Users\aafil\source\repos\Horse\obj\Debug\netcoreapp3.1\Horse.genruntimeconfig.cache
